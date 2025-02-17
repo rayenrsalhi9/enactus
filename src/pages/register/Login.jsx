@@ -1,12 +1,30 @@
 import googleIcon from '../../assets/google-icon.png'
 import facebookIcon from '../../assets/facebook-icon.png'
-import { Link } from 'react-router-dom'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../config/config'
+import { Link, Form, useNavigation, redirect } from 'react-router-dom'
 import './Login.css'
 
+export async function action({ request }) {
+    const formData = await request.formData()
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    try {
+        await createUserWithEmailAndPassword(auth, email, password)
+        return redirect('/profile')
+    } catch (err) {
+        return err
+    }
+}
+
 export default function Login() {
+
+    const navigation = useNavigation()
+
     return (
         <section className='login-container'>
-            <form method='post' className='login'>
+            <Form method='post' className='login'>
 
                 <h1>Sign in to your account</h1>
 
@@ -24,8 +42,8 @@ export default function Login() {
                     placeholder='password' 
                 />
 
-                <button>Login</button>
-            </form>   
+                <button disabled={navigation.state === 'submitting'}>Login</button>
+            </Form>   
             <span>OR</span>
             <button className="google-login">
                 <img src={googleIcon} alt="google icon" />     

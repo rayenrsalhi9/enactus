@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import login from '../../assets/login.svg'
 import './Header.css'
 
@@ -7,9 +7,9 @@ export default function Header() {
         <header>
             <Link to='/' className='logo'>#GreenT</Link>
             <nav>
-                <Link to=''>My Profile</Link>
-                <Link to=''>Our mission</Link>
-                <Link to=''>Find Plastics</Link>
+                <NavLink to='profile'>My Profile</NavLink>
+                <NavLink to='about'>Our mission</NavLink>
+                <NavLink to='plastic'>Find Plastics</NavLink>
                 <Link to='login'>
                     <img src={login} alt="login icon" />
                 </Link>
