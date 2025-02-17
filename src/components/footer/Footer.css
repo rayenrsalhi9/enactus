@@ -1,0 +1,13 @@
+footer {
+    background: #181f23;
+    color: #aaa;
+
+    min-height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}

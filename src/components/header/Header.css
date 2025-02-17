@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 70px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media(max-width: 576px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+}
+
+header a {
+    color: #181f23;
+}
+
+header > .logo {
+    font-size: 32px;
+    font-weight: 800;
+}
+
+header > nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header > nav > a > img {
+    width: 24px;
+    object-fit: cover;
+}
