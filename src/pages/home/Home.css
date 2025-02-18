@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    color: #181f23;
+    color: #fafafa;
 
     display: flex;
     flex-direction: column;
@@ -58,6 +58,6 @@
     transition: .4s;
 }
 
-.home > button:hover {
-    background: #121517;
+.home > .home-button:hover {
+    background: #111;
 }

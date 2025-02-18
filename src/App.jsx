@@ -7,7 +7,7 @@ import {
 
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
-import Login, { action as loginAction } from './pages/register/Login'
+import Signup, { action as SignupAction } from './pages/register/Signup'
 import Profile from './pages/profile/Profile'
 import About from './pages/about/About'
 import Plastic from './pages/plastic/Plastic'
@@ -19,8 +19,8 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home />} />
     <Route 
       path='/login' 
-      element={<Login />} 
-      action={loginAction}
+      element={<Signup />} 
+      action={SignupAction}
     />
     <Route 
       path='/profile'
