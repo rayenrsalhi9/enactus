@@ -9,8 +9,5 @@ export const getSignUpErrorMessage = (errorCode) => {
         "auth/network-request-failed": "Network error. Check your internet connection.",
         "auth/too-many-requests": "Too many attempts. Try again later.",
     };
-
-    console.log(errorMessages[errorCode])
-
     return errorMessages[errorCode] || "An unexpected error occurred. Please try again.";
 };

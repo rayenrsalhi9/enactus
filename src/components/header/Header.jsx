@@ -10,7 +10,7 @@ export default function Header() {
                 <NavLink to='profile'>My Profile</NavLink>
                 <NavLink to='about'>Our mission</NavLink>
                 <NavLink to='plastic'>Find Plastics</NavLink>
-                <Link to='signup'>
+                <Link to='login'>
                     <img src={login} alt="login icon" />
                 </Link>
             </nav>

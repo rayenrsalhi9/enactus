@@ -1,92 +1,48 @@
-/* eslint-disable react-refresh/only-export-components */
-import googleIcon from '../../assets/google-icon.png'
-
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../config/config'
-import { googleLogin } from '../../utils/googleLogin'
-
-import { 
-    Link, 
-    Form, 
-    useNavigation,
-    useActionData, 
-    useSearchParams,
-    redirect,
-    useNavigate
-} from 'react-router-dom'
-
-import { getSignUpErrorMessage } from '../../utils/signupErrors'
-
-import './Signup.css'
-
-export async function action({ request }) {
-    const formData = await request.formData()
-    const email = formData.get('email')
-    const password = formData.get('password')
-
-    try {
-        await createUserWithEmailAndPassword(auth, email, password)
-        return redirect('/profile')
-    } catch (err) {
-        return getSignUpErrorMessage(err.code)
-    }
-}
+import { Form, Link } from 'react-router-dom'
+import './SignUp.css'
 
 export default function SignUp() {
-
-    const navigation = useNavigation()
-    const errorMessage = useActionData()
-    const [searchParams] = useSearchParams()
-
-    const navigate = useNavigate();
-
-    const handleGoogleLogin = async () => {
-        await googleLogin(navigate);
-    };
-
     return (
-        <section className='login-container'>
-            <Form method='post' className='login' replace>
+        <section className="signup">
+            <Form method='post' className='signup-form'>
+                <h1>Sign Up</h1>
+                <p>Create your account to get started</p>
+                
+                <div className="form-row">
+                    <div className="form-group">
+                        <label htmlFor="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" />
+                    </div>
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="city">City</label>
+                    <input type="text" id="city" name="city" />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" />
+                </div>
 
-                <h1>Create an account</h1>
-
-                {
-                    searchParams && 
-                    <h4 className='error-message'>
-                        {searchParams.get('message')}
-                    </h4>
-                }
-
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    placeholder='email' 
-                />
-
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="password" 
-                    placeholder='password' 
-                />
-
-                <button disabled={navigation.state === 'submitting'}>
-                    {
-                        navigation.state === 'submitting' ?
-                        'Signing in...' :
-                        'Sign up' 
-                    }
-                </button>
-
-                {errorMessage && <h4 className='error-message'>{errorMessage}</h4>}
-            </Form>   
-            <span>OR</span>
-            <button className="google-login" onClick={handleGoogleLogin}>
-                <img src={googleIcon} alt="google icon" />     
-                Continue with Google
-            </button>   
-            <p>Already have a GreenT account ?<Link to='/login'>Login now</Link></p>
+                <p>Already have an account? <Link to='/signup'>Login now</Link> </p>
+                
+                <button type="submit">Sign Up</button>
+            </Form>
         </section>
     )
 }
