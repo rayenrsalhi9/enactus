@@ -86,7 +86,7 @@ export default function SignUp() {
                 <img src={googleIcon} alt="google icon" />     
                 Continue with Google
             </button>   
-            <p>Already have a GreenT account ?<Link to=''>Login now</Link></p>
+            <p>Already have a GreenT account ?<Link to='/login'>Login now</Link></p>
         </section>
     )
 }
