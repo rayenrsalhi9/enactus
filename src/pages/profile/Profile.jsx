@@ -1,7 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from 'react'
 import { auth } from '../../config/config'
-import './Profile.css'
 import { redirect } from 'react-router-dom'
+import defaultAvatar from '../../assets/default-avatar.png'  
+import './Profile.css'
 
 export async function loader() {
     if (!auth.currentUser) {
@@ -22,11 +24,35 @@ export default function Profile() {
     }, []);
 
     return (
-        <section className="profile">
-            <h1>Welcome !</h1>
-            <p>{user?.email || 'User'}</p>
-            <p>{user?.displayName}</p>
-            <p>{user?.photoURL}</p>
-        </section>
+        <div className="profile-container">
+            <div className="wrapper">
+                <div className="profile">
+                    <img src={defaultAvatar} alt="Profile Picture" />
+                    <div className="profile-info">
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <h2 id="name">{user.displayName}</h2>
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <h2 id="email">{user.email}</h2>
+                        </div>
+                        <div className="personal-info">
+                            <div>
+                                <label htmlFor="city">Name</label>
+                                <h2 id="city">Le kef, Tunisia</h2>
+                            </div>
+                            <div>
+                                <label htmlFor="phone">Phone number</label>
+                                <h2 id="phone">(+216) 99999999</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="edit-profile">
+                    <button>Edit Profile</button>
+                </div>
+            </div>
+        </div>
     )
 }
