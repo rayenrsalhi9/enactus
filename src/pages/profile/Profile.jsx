@@ -39,7 +39,7 @@ export default function Profile() {
                         </div>
                         <div className="personal-info">
                             <div>
-                                <label htmlFor="city">Name</label>
+                                <label htmlFor="city">City</label>
                                 <h2 id="city">Le kef, Tunisia</h2>
                             </div>
                             <div>
