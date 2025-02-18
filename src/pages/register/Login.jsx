@@ -37,7 +37,6 @@ export default function Login() {
     const navigation = useNavigation()
     const errorMessage = useActionData()
     const [searchParams] = useSearchParams()
-
     const navigate = useNavigate();
 
     const handleGoogleLogin = async () => {
@@ -90,7 +89,7 @@ export default function Login() {
             </button>
             
             <p className="login-link">
-                Dont have an account? <Link to="/login">Create one now.</Link>
+                Dont have an account? <Link to="/signup">Create one now.</Link>
             </p>
         </section>
     )

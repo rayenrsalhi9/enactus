@@ -39,7 +39,7 @@ export default function SignUp() {
                     <input type="tel" id="phone" name="phone" />
                 </div>
 
-                <p>Already have an account? <Link to='/signup'>Login now</Link> </p>
+                <p>Already have an account? <Link to='/login'>Login now</Link> </p>
                 
                 <button type="submit">Sign Up</button>
             </Form>

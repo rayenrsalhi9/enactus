@@ -1,14 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from 'react'
 import { auth } from '../../config/config'
-import { redirect } from 'react-router-dom'
+import { redirect } from 'react-router-dom';
 import defaultAvatar from '../../assets/default-avatar.png'  
 import './Profile.css'
 
-export function loader(auth) {
+export function loader() {
     if (!auth.currentUser) {
         return redirect('/login?message=You have to log in to proceed')
     }
+    return null
 }
 
 export default function Profile() {
