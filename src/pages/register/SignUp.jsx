@@ -10,10 +10,13 @@ import {
     Form, 
     useNavigation,
     useActionData, 
+    useSearchParams,
     redirect,
     useNavigate
 } from 'react-router-dom'
+
 import { getSignUpErrorMessage } from '../../utils/signupErrors'
+
 import './Signup.css'
 
 export async function action({ request }) {
@@ -33,6 +36,7 @@ export default function Signup() {
 
     const navigation = useNavigation()
     const errorMessage = useActionData()
+    const [searchParams] = useSearchParams()
 
     const navigate = useNavigate();
 
@@ -42,9 +46,16 @@ export default function Signup() {
 
     return (
         <section className='login-container'>
-            <Form method='post' className='login'>
+            <Form method='post' className='login' replace>
 
                 <h1>Create an account</h1>
+
+                {
+                    searchParams && 
+                    <h4 className='error-message'>
+                        {searchParams.get('message')}
+                    </h4>
+                }
 
                 <input 
                     type="email" 
@@ -62,9 +73,9 @@ export default function Signup() {
 
                 <button disabled={navigation.state === 'submitting'}>
                     {
-                        navigation.state === 'submitting' ? 
-                        'Sign up' : 
-                        'Signing in...'
+                        navigation.state === 'submitting' ?
+                        'Signing in...' :
+                        'Sign up' 
                     }
                 </button>
 

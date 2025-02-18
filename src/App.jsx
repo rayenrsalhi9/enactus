@@ -8,7 +8,7 @@ import {
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
 import Signup, { action as SignupAction } from './pages/register/Signup'
-import Profile from './pages/profile/Profile'
+import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import About from './pages/about/About'
 import Plastic from './pages/plastic/Plastic'
 
@@ -25,6 +25,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path='/profile'
       element={<Profile />}
+      loader={profileLoader}
     />
     <Route path='about' element={<About />} />
     <Route path='plastic' element={<Plastic />} />

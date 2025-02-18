@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import { auth } from '../../config/config'
 import './Profile.css'
+import { redirect } from 'react-router-dom'
+
+export async function loader() {
+    if (!auth.currentUser) {
+        return redirect('/login?message=You have to log in to proceed')
+    }
+    return null
+}
 
 export default function Profile() {
     const [user, setUser] = useState(auth.currentUser)
