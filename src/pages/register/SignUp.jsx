@@ -1,14 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
 import googleIcon from '../../assets/google-icon.png'
-import facebookIcon from '../../assets/facebook-icon.png'
+
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/config'
+import { googleLogin } from '../../utils/googleLogin'
+
 import { 
     Link, 
     Form, 
     useNavigation,
     useActionData, 
-    redirect } from 'react-router-dom'
+    redirect,
+    useNavigate
+} from 'react-router-dom'
+import { getSignUpErrorMessage } from '../../utils/signupErrors'
 import './Signup.css'
 
 export async function action({ request }) {
@@ -20,7 +25,7 @@ export async function action({ request }) {
         await createUserWithEmailAndPassword(auth, email, password)
         return redirect('/profile')
     } catch (err) {
-        return err
+        return getSignUpErrorMessage(err.code)
     }
 }
 
@@ -28,7 +33,12 @@ export default function Signup() {
 
     const navigation = useNavigation()
     const errorMessage = useActionData()
-    errorMessage && console.log(errorMessage.message)
+
+    const navigate = useNavigate();
+
+    const handleGoogleLogin = async () => {
+        await googleLogin(navigate);
+    };
 
     return (
         <section className='login-container'>
@@ -50,18 +60,22 @@ export default function Signup() {
                     placeholder='password' 
                 />
 
-                <button disabled={navigation.state === 'submitting'}>Create account</button>
+                <button disabled={navigation.state === 'submitting'}>
+                    {
+                        navigation.state === 'submitting' ? 
+                        'Sign up' : 
+                        'Signing in...'
+                    }
+                </button>
+
+                {errorMessage && <h4 className='error-message'>{errorMessage}</h4>}
             </Form>   
             <span>OR</span>
-            <button className="google-login">
+            <button className="google-login" onClick={handleGoogleLogin}>
                 <img src={googleIcon} alt="google icon" />     
                 Continue with Google
-            </button>     
-            <button className="facebook-login">
-                <img src={facebookIcon} alt="facebook icon" />
-                Continue with Facebook
-            </button>    
-            <p>Already have a GreenT account ?<Link to=''>Login now </Link></p>
+            </button>   
+            <p>Already have a GreenT account ?<Link to=''>Login now</Link></p>
         </section>
     )
 }

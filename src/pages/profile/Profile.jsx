@@ -17,6 +17,8 @@ export default function Profile() {
         <section className="profile">
             <h1>Welcome !</h1>
             <p>{user?.email || 'User'}</p>
+            <p>{user?.displayName}</p>
+            <p>{user?.photoURL}</p>
         </section>
     )
 }
