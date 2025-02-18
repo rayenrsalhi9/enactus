@@ -7,7 +7,7 @@ import {
 
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
-import Signup, { action as SignupAction } from './pages/register/Signup'
+import SignUp, { action as SignupAction } from './pages/register/SignUp'
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import About from './pages/about/About'
 import Plastic from './pages/plastic/Plastic'
@@ -18,8 +18,8 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route index element={<Home />} />
     <Route 
-      path='/login' 
-      element={<Signup />} 
+      path='/signup' 
+      element={<SignUp />} 
       action={SignupAction}
     />
     <Route 

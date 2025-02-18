@@ -32,7 +32,7 @@ export async function action({ request }) {
     }
 }
 
-export default function Signup() {
+export default function SignUp() {
 
     const navigation = useNavigation()
     const errorMessage = useActionData()

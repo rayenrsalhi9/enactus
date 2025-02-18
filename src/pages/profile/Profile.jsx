@@ -7,7 +7,7 @@ import './Profile.css'
 
 export async function loader() {
     if (!auth.currentUser) {
-        return redirect('/login?message=You have to log in to proceed')
+        return redirect('/signup?message=You have to log in to proceed')
     }
     return null
 }
