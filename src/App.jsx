@@ -7,8 +7,8 @@ import {
 
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
-import SignUp from './pages/register/SignUp'
-import Login, { action as loginAction }from './pages/register/Login'
+import SignUp from './pages/register/signup/SignUp'
+import Login, { action as loginAction }from './pages/register/login/Login'
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import About from './pages/about/About'
 import Plastic from './pages/plastic/Plastic'
