@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import googleIcon from '../../assets/google-icon.png'
+import googleIcon from '../../../assets/google-icon.png'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/config'
