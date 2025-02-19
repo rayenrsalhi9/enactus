@@ -7,7 +7,7 @@ import {
 
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
-import SignUp from './pages/register/signup/SignUp'
+import SignUp, {action as SignupAction} from './pages/register/signup/SignUp'
 import Login, { action as loginAction }from './pages/register/login/Login'
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import About from './pages/about/About'
@@ -22,6 +22,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path='signup' 
       element={<SignUp />} 
+      action={SignupAction}
     />
     <Route 
       path='login'
