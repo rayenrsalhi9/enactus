@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Form, Link, redirect } from 'react-router-dom'
+import { Form, Link, redirect, useActionData, useNavigation } from 'react-router-dom'
 import { auth, db } from '../../../config/config'
 import './SignUp.css'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -10,6 +10,10 @@ export async function action({ request }) {
     const formData = await request.formData()
     const password = formData.get('password')
     const { firstName, lastName, email, city, phone } = Object.fromEntries(formData)
+
+    if (!firstName || !lastName || !email || !password || !city || !phone) {
+        return "All fields are required!"
+    }
 
     try {
         const userData = await createUserWithEmailAndPassword(auth, email, password)
@@ -30,6 +34,8 @@ export async function action({ request }) {
 }
 
 export default function SignUp() {
+    const navigation = useNavigation()
+    const errorMessage = useActionData()
     return (
         <section className="signup">
             <Form method='post' className='signup-form'>
@@ -63,7 +69,20 @@ export default function SignUp() {
 
                 <p>Already have an account? <Link to='/login'>Login now</Link></p>
                 
-                <button type="submit">Sign Up</button>
+                <button 
+                    type="submit"
+                    disabled={navigation.state === 'submitting'}
+                >
+                    {
+                        navigation.state === 'submitting' ?
+                        'Signing up...' : 'Sign up'
+                    }
+                </button>
+
+                {
+                    errorMessage &&
+                    <div id="submit-error" className="error-message">{errorMessage}</div>
+                }
             </Form>
         </section>
     )

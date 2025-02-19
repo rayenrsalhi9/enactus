@@ -72,6 +72,11 @@
     background-color: #111;
 }
 
+.signup-form button:disabled {
+    opacity: .5;
+    cursor: initial;
+}
+
 .signup-form a {
     color: #181f23;
 }
@@ -79,4 +84,11 @@
 .signup-form a:hover {
     text-decoration: underline;
     text-underline-offset: 2px;
+}
+
+.signup .error-message {
+    color: #de2436;
+    font-size: 16px;
+    margin: 15px auto;
+    text-align: center;
 }
