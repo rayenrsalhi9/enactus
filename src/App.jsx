@@ -12,6 +12,7 @@ import Login, { action as loginAction }from './pages/register/login/Login'
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import About from './pages/about/About'
 import Plastic from './pages/plastic/Plastic'
+import NotFound from './components/notFound/NotFound'
 
 import './App.css'
 
@@ -34,6 +35,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route path='about' element={<About />} />
     <Route path='plastic' element={<Plastic />} />
+    <Route path='*'element={<NotFound />} /> 
   </Route>
 ))
 
