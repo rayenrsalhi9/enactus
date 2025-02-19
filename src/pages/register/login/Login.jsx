@@ -2,8 +2,8 @@
 import googleIcon from '../../../assets/google-icon.png'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../config/config'
-import { googleLogin } from '../../utils/googleLogin'
+import { auth } from '../../../config/config'
+import { googleLogin } from '../../../utils/googleLogin'
 
 import { 
     Link, 
@@ -15,7 +15,7 @@ import {
     useNavigate
 } from 'react-router-dom'
 
-import { getSignUpErrorMessage } from '../../utils/signupErrors'
+import { getSignUpErrorMessage } from '../../../utils/signupErrors'
 
 import './Login.css'
 
