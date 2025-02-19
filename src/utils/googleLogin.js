@@ -1,10 +1,21 @@
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../config/config";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, googleProvider, db } from "../config/config";
 import { getSignUpErrorMessage } from "./signupErrors";
 
 export async function googleLogin(navigate) {
     try {
-        await signInWithPopup(auth, googleProvider)
+        const userData = await signInWithPopup(auth, googleProvider)
+        const user = userData.user
+        
+        await setDoc(doc(db, "users", user.uid), {
+            firstName: user.displayName.split(' ')[0],
+            lastName: user.displayName.split(' ')[1],
+            email: user.email,
+            city: '',
+            phone: ''
+        })
+
         navigate('/profile')
         return null
     } catch(err) {

@@ -1,6 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState, Suspense } from 'react'
-import { redirect, useLoaderData, defer, Await } from 'react-router-dom';
+import { 
+    redirect, 
+    useLoaderData, 
+    defer, 
+    Await,
+    Link } from 'react-router-dom';
 
 import { auth } from '../../config/config'
 import { getUser } from '../../database/profile';
@@ -33,37 +38,37 @@ export default function Profile() {
         <div className="profile-container">
             <Suspense fallback={<Loading />}>
                     <div className="wrapper">
-                    <Await resolve={profileObject.profile}>
-                        {profile => (
-                            <div className="profile">
-                                <img src={defaultAvatar} alt="Profile Picture" />
-                                <div className="profile-info">
-                                    <div>
-                                        <label htmlFor="name">Name</label>
-                                        <h2 id="name">
-                                            {(profile.firstName && profile.lastName) ? `${profile.firstName} ${profile.lastName}` : user.displayName || 'Anonymous User'}
-                                        </h2>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email">Email</label>
-                                        <h2 id="email">{profile.email || user.email}</h2>
-                                    </div>
-                                    <div className="personal-info">
+                        <Await resolve={profileObject.profile}>
+                            {profile => (
+                                <div className="profile">
+                                    <img src={defaultAvatar} alt="Profile Picture" />
+                                    <div className="profile-info">
                                         <div>
-                                            <label htmlFor="city">City</label>
-                                            <h2 id="city">{profile.city || '--------'}</h2>
+                                            <label htmlFor="name">Name</label>
+                                            <h2 id="name">
+                                                {(profile.firstName && profile.lastName) ? `${profile.firstName} ${profile.lastName}` : user.displayName || 'Anonymous User'}
+                                            </h2>
                                         </div>
                                         <div>
-                                            <label htmlFor="phone">Phone number</label>
-                                            <h2 id="phone">(+216) {profile.phone || '--------'}</h2>
+                                            <label htmlFor="email">Email</label>
+                                            <h2 id="email">{profile.email || user.email}</h2>
+                                        </div>
+                                        <div className="personal-info">
+                                            <div>
+                                                <label htmlFor="city">City</label>
+                                                <h2 id="city">{profile.city || '--------'}</h2>
+                                            </div>
+                                            <div>
+                                                <label htmlFor="phone">Phone number</label>
+                                                <h2 id="phone">(+216) {profile.phone || '--------'}</h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
                         </Await>
                     <div className="edit-profile">
-                        <button>Edit Profile</button>
+                        <Link to='/editProfile' className='edit-profile-btn'>Edit Profile</Link>
                     </div>
                 </div>
             </Suspense>
