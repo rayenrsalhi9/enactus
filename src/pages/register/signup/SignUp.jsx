@@ -10,33 +10,27 @@ export default function SignUp() {
                 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" />
+                        <input type="text" id="firstName" name="firstName" placeholder='first name' />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" />
+                        <input type="text" id="lastName" name="lastName" placeholder='last name' />
                     </div>
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" />
+                    <input type="email" id="email" name="email" placeholder='email'/>
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" id="password" name="password" placeholder='password'/>
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="city">City</label>
-                    <input type="text" id="city" name="city" />
+                    <input type="text" id="city" name="city" placeholder='city'/>
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" />
+                    <input type="number" id="phone" name="phone" placeholder='phone number'/>
                 </div>
 
                 <p>Already have an account? <Link to='/login'>Login now</Link></p>

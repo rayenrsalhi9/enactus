@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import googleIcon from '../../../assets/google-icon.png'
 
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/config'
 import { googleLogin } from '../../../utils/googleLogin'
 
@@ -15,9 +15,10 @@ import {
     useNavigate
 } from 'react-router-dom'
 
-import { getSignUpErrorMessage } from '../../../utils/signupErrors'
+import { getLoginErrorMessage } from '../../../utils/loginErrors'
 
 import './Login.css'
+
 
 export async function action({ request }) {
     const formData = await request.formData()
@@ -25,10 +26,10 @@ export async function action({ request }) {
     const password = formData.get('password')
 
     try {
-        await createUserWithEmailAndPassword(auth, email, password)
+        await signInWithEmailAndPassword(auth, email, password)
         return redirect('/profile')
     } catch (err) {
-        return getSignUpErrorMessage(err.code)
+        return getLoginErrorMessage(err.code)
     }
 }
 
