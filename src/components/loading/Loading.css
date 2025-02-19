@@ -1,0 +1,38 @@
+.loading {
+    height: calc(100dvh - 140px);
+
+    padding: 50px 20px;
+}
+
+@media(max-width: 576px) {
+    .loading {
+        height: 100dvh;
+    }
+}
+
+.loading > h1 {
+    text-align: center;
+    color: #161616;
+    font-size: 38px;
+    animation: fade 2s ease-in infinite;
+}
+
+@keyframes fade {
+    0%, 20% {
+        content: "Loading";
+    }
+    40% {
+        content: "Loading.";
+    }
+    60% {
+        content: "Loading..";
+    }
+    80%, 100% {
+        content: "Loading...";
+    }
+}
+
+.loading > h1::after {
+    content: "loading";
+    animation: fade 2s steps(4, end) infinite;
+}
