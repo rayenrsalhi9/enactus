@@ -55,9 +55,19 @@
     font-size: 16px;
 
     cursor: pointer;
+    position: relative;
     transition: .4s;
 }
 
 .home > .home-button:hover {
     background: #111;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 30px; 
+    height: 30px;
 }
