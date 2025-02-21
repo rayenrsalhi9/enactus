@@ -14,7 +14,7 @@ import Login, { action as loginAction }from './pages/register/login/Login'
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import Edit, { action as editAction } from './pages/edit/Edit'
 import About from './pages/about/About'
-import Plastic from './pages/plastic/Plastic'
+import Plastic, { loader as plasticLoader} from './pages/plastic/Plastic'
 import NotFound from './components/notFound/NotFound'
 
 import './App.css'
@@ -44,7 +44,11 @@ const router = createBrowserRouter(createRoutesFromElements(
       action={editAction}
     />
     <Route path='about' element={<About />} />
-    <Route path='plastic' element={<Plastic />} />
+    <Route 
+      path='plastic' 
+      element={<Plastic />}
+      loader={plasticLoader}
+    />
     <Route path='*'element={<NotFound />} /> 
   </Route>
 ))

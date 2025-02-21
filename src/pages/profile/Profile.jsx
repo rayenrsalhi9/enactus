@@ -42,8 +42,7 @@ export default function Profile() {
 
     return (
         <div className="profile-container">
-            <Suspense fallback={<Loading />}>
-                    
+            <Suspense fallback={<Loading />}> 
                     <div className="wrapper">
                         {successMsg && <SuccessMsg msg={successMsg.get('message')} />}
                         <Await resolve={profileObject.profile}>

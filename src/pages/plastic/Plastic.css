@@ -1,0 +1,16 @@
+.plastic-container {
+    padding: 50px 20px;
+    min-height: calc(100dvh - 140px);
+}
+
+.plastic-container > h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+.plastic-container > .posts-container {
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}

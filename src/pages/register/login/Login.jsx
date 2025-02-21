@@ -25,11 +25,13 @@ export async function action({ request }) {
     const email = formData.get('email')
     const password = formData.get('password')
 
+    const pathname = new URL(request.url).searchParams.get('pathname') || '/profile'
+
     if (!email || !password) return 'All fields are required'
 
     try {
         await signInWithEmailAndPassword(auth, email, password)
-        return redirect('/profile')
+        return redirect(pathname)
     } catch (err) {
         return getLoginErrorMessage(err.code)
     }
