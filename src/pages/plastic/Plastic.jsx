@@ -1,13 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Suspense } from 'react'
 import Loading from '../../components/loading/Loading'
-import { Await, defer, useLoaderData } from 'react-router-dom'
+import { Await, defer, redirect, useLoaderData } from 'react-router-dom'
 import Post from './post/Post'
 import { getPosts } from '../../utils/getPosts'
 import './Plastic.css'
+import { auth } from '../../config/config'
 
 export async function loader() {
-    return defer({ posts: getPosts()})
+    if (!auth.currentUser) {
+        return redirect('/login?message=You have to log in to proceed')
+    } else {
+        return defer({ posts: getPosts()})
+    }
 }
 
 export default function Plastic() {
