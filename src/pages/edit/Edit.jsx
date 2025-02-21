@@ -51,26 +51,26 @@ export default function Edit() {
                                         <div className="profile-info">
                                             <div className="personal-info names">
                                                 <div>
-                                                    <label htmlFor="firstName">First name</label>
-                                                    <h2>{profile.firstName}</h2>
+                                                    <label>First name</label>
+                                                    <h2 id='firstName'>{profile.firstName}</h2>
                                                 </div>
                                                 <div>
-                                                    <label htmlFor="lastName">Last name</label>
+                                                    <label>Last name</label>
                                                     <h2>{profile.lastName}</h2>
                                                 </div>
                                             </div>
                                             <div>
-                                                <label htmlFor="email">Email</label>
+                                                <label>Email</label>
                                                 <h1>{profile.email}</h1>
                                             </div>
                                             <div className="personal-info">
                                                 <div>
                                                     <label htmlFor="city">City</label>
-                                                    <input type="text" name='city' defaultValue={profile.city} />
+                                                    <input type="text" name='city' id='city' defaultValue={profile.city} />
                                                 </div>
                                                 <div>
                                                     <label htmlFor="phone">Phone number</label>
-                                                    <input type="number" name="phone" defaultValue={profile.phone} />
+                                                    <input type="number" name="phone" id='phone' defaultValue={profile.phone} />
                                                 </div>
                                             </div>
                                             
