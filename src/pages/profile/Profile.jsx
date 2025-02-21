@@ -3,11 +3,13 @@ import { useEffect, useState, Suspense } from 'react'
 import { 
     redirect, 
     useLoaderData, 
+    useNavigate,
     defer, 
     Await,
     Link,
     useSearchParams } from 'react-router-dom';
 
+import { signout } from '../../utils/signout';
 import { auth } from '../../config/config'
 import { getUser } from '../../database/profile';
 
@@ -28,6 +30,7 @@ export default function Profile() {
     const [user, setUser] = useState(auth.currentUser)
     const profileObject = useLoaderData()
     const [successMsg] = useSearchParams()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -74,6 +77,12 @@ export default function Profile() {
                         </Await>
                     <div className="edit-profile">
                         <Link to='/editProfile' className='edit-profile-btn'>Edit Profile</Link>
+                        <button 
+                            className='logout-btn'
+                            onClick={() => signout(navigate)}
+                        >
+                            Sign out
+                        </button>
                     </div>
                 </div>
             </Suspense>

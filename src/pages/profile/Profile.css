@@ -77,6 +77,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 6px;
+}
+
+@media (max-width: 576px) {
+    .edit-profile {
+        flex-direction: column;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 }
 
 .edit-profile > .edit-profile-btn {
@@ -101,4 +110,24 @@
 
 .edit-profile > .edit-profile-btn:hover {
     background: #111;
+}
+
+.edit-profile > .logout-btn {
+    width: 100%;
+    max-width: 120px;
+    height: 40px;
+
+    border: none;
+    border-radius: 5px;
+
+    color: #fafafa;
+    background: #c1121f;
+    font-family: 'Inter', sans-serif;
+
+    cursor: pointer;
+    transition: .4s;
+}
+
+.edit-profile > .logout-btn:hover {
+    background-color: #aa0611;
 }
