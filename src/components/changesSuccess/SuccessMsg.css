@@ -1,0 +1,24 @@
+.success-msg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px auto 0;
+}
+
+@media (max-width: 576px) {
+    .success-msg-container {
+        margin-left: 20px;
+        
+    }
+}
+
+.success-msg-container > h3 {
+    color: #4f772d;
+}
+
+.success-msg-container > .success-icon {
+    display: block;
+    width: 100%;
+}

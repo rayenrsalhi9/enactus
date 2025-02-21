@@ -5,12 +5,14 @@ import {
     useLoaderData, 
     defer, 
     Await,
-    Link } from 'react-router-dom';
+    Link,
+    useSearchParams } from 'react-router-dom';
 
 import { auth } from '../../config/config'
 import { getUser } from '../../database/profile';
 
 import Loading from '../../components/loading/Loading';
+import SuccessMsg from '../../components/changesSuccess/SuccessMsg';
 import defaultAvatar from '../../assets/default-avatar.png'
 import './Profile.css'
 
@@ -25,6 +27,7 @@ export function loader() {
 export default function Profile() {
     const [user, setUser] = useState(auth.currentUser)
     const profileObject = useLoaderData()
+    const [successMsg] = useSearchParams()
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -37,7 +40,9 @@ export default function Profile() {
     return (
         <div className="profile-container">
             <Suspense fallback={<Loading />}>
+                    
                     <div className="wrapper">
+                        {successMsg && <SuccessMsg msg={successMsg.get('message')} />}
                         <Await resolve={profileObject.profile}>
                             {profile => (
                                 <div className="profile">

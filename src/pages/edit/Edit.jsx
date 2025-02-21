@@ -28,7 +28,7 @@ export async function action({ request }) {
             city,
             phone
         })
-        return redirect('/profile')
+        return redirect('/profile?message=Changes have been applied successfully.')
     } catch(err) {
         return err
     }
