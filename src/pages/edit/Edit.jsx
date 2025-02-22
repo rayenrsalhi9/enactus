@@ -15,19 +15,6 @@ import { doc, updateDoc } from 'firebase/firestore'
 import defaultAvatar from '../../assets/default-avatar.png'
 import './Edit.css'
 
-export function loader() {
-    return new Promise((resolve) => {
-            const unsubscribe = auth.onAuthStateChanged((user) => {
-                if (!user) {
-                    resolve(redirect('/login?message=You have to log in to proceed'));
-                } else {
-                    resolve(null)
-                }
-                unsubscribe();
-            });
-        });
-}
-
 export async function action({ request }) {
     const formData = await request.formData()
     const { city, phone } = Object.fromEntries(formData)
