@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import Loading from '../../components/loading/Loading'
 import { Await, defer, redirect, useLoaderData } from 'react-router-dom'
 import Post from './post/Post'
+import NewPostLink from './new-post/NewPostLink'
 import { getPosts } from '../../utils/getPosts'
 import './Plastic.css'
 import { auth } from '../../config/config'
@@ -29,6 +30,7 @@ export default function Plastic() {
                 {posts => (
                     <section className='plastic-container'>
                         <h1>Recent Plastic Reports</h1>
+                        <NewPostLink />
                         <div className="posts-container">
                             {posts.map(post => <Post key={post.id} post={post}/>)}
                         </div>
