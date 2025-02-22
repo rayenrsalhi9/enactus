@@ -20,6 +20,8 @@ export function loader() {
             const unsubscribe = auth.onAuthStateChanged((user) => {
                 if (!user) {
                     resolve(redirect('/login?message=You have to log in to proceed'));
+                } else {
+                    resolve(null)
                 }
                 unsubscribe();
             });

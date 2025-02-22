@@ -12,10 +12,10 @@ import SignUp, {action as SignupAction} from './pages/register/signup/SignUp'
 import Login, { action as loginAction }from './pages/register/login/Login'
 
 import Profile, { loader as profileLoader } from './pages/profile/Profile'
-import Edit, { action as editAction } from './pages/edit/Edit'
+import Edit, { action as editAction, loader as editLoader } from './pages/edit/Edit'
 import About from './pages/about/About'
 import Plastic, { loader as plasticLoader} from './pages/plastic/Plastic'
-import NewPost, { action as newPostAction, loader as newPostLoader } from './pages/plastic/new-post/NewPost'
+import NewPost, { action as newPostAction, loader as newPostLoader} from './pages/plastic/new-post/NewPost'
 import NotFound from './components/notFound/NotFound'
 
 import './App.css'
@@ -41,7 +41,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path='editProfile'
       element={<Edit />}
-      loader={profileLoader}
+      loader={editLoader}
       action={editAction}
     />
     <Route path='about' element={<About />} />

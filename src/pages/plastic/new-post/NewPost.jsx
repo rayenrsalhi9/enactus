@@ -8,11 +8,13 @@ import { shareNewPost } from '../../../utils/shareNewPost'
 import { auth } from '../../../config/config'
 import './NewPost.css'
 
-export async function loader() {
+export function loader() {
     return new Promise((resolve) => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (!user) {
                 resolve(redirect('/login?message=You have to log in to proceed'))
+            } else {
+                resolve(null)
             }
             unsubscribe()
         }) 
