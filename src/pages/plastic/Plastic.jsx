@@ -4,6 +4,7 @@ import Loading from '../../components/loading/Loading'
 import { Await, defer, redirect, useLoaderData } from 'react-router-dom'
 import Post from './post/Post'
 import NewPostLink from './new-post/NewPostLink'
+import EmptyPosts from '../../components/emptyPosts/EmptyPosts'
 import { getPosts } from '../../utils/getPosts'
 import './Plastic.css'
 import { auth } from '../../config/config'
@@ -27,13 +28,17 @@ export default function Plastic() {
     return (
         <Suspense fallback={<Loading />}>
             <Await resolve={postsObject.posts}>
-                {posts => (
+                {posts => (              
                     <section className='plastic-container'>
                         <h1>Recent Plastic Reports</h1>
                         <NewPostLink />
                         <div className="posts-container">
-                            {posts.map(post => <Post key={post.id} post={post}/>)}
+                            {
+                                posts.length > 0 && 
+                                posts.map(post => <Post key={post.id} post={post}/>)
+                            }
                         </div>
+                        {posts.length === 0 && <EmptyPosts />}
                     </section>
                 )}
             </Await>

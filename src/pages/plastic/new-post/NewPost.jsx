@@ -1,9 +1,35 @@
-import { Form } from 'react-router-dom'
+/* eslint-disable react-refresh/only-export-components */
+import { Form, redirect } from 'react-router-dom'
 import locationIcon from '../../../assets/plastic-post/location.png'
 import bottleIcon from '../../../assets/plastic-post/bottle.png'
 import bagIcon from '../../../assets/plastic-post/bag.png'
 import mixedIcon from '../../../assets/plastic-post/mixedMaterial.png'
+import { shareNewPost } from '../../../utils/shareNewPost'
+import { auth } from '../../../config/config'
 import './NewPost.css'
+
+export async function loader() {
+    return new Promise((resolve) => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (!user) {
+                resolve(redirect('/login?message=You have to log in to proceed'))
+            }
+            unsubscribe()
+        }) 
+    })
+}
+
+export async function action({ request }) {
+    const formData = await request.formData()
+    const { title, location, description, bottles, bags, other } = Object.fromEntries(formData)
+    
+    if (!title || !location || !description || !bottles || !bags || !other) {
+        return "Please fill in all fields to submit your post."
+    }
+
+    const postAttributes = {title, location, description, bottles, bags, other}
+    return shareNewPost(postAttributes)
+}
 
 export default function NewPost() {
     return (

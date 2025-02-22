@@ -1,0 +1,20 @@
+.empty-posts {
+    width: 100%;
+    max-width: 594px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-posts > .no-posts-icon {
+    width: 300px;
+}
+
+.empty-posts > h1 {
+    font-size: 32px;
+    margin: 10px auto;
+}
