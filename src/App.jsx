@@ -15,6 +15,7 @@ import Profile, { loader as profileLoader } from './pages/profile/Profile'
 import Edit, { action as editAction } from './pages/edit/Edit'
 import About from './pages/about/About'
 import Plastic, { loader as plasticLoader} from './pages/plastic/Plastic'
+import NewPost from './pages/plastic/new-post/NewPost'
 import NotFound from './components/notFound/NotFound'
 
 import './App.css'
@@ -48,6 +49,10 @@ const router = createBrowserRouter(createRoutesFromElements(
       path='plastic' 
       element={<Plastic />}
       loader={plasticLoader}
+    />
+    <Route 
+      path='newPost'
+      element={<NewPost />}
     />
     <Route path='*'element={<NotFound />} /> 
   </Route>
