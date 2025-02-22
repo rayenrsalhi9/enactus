@@ -19,11 +19,16 @@ import defaultAvatar from '../../assets/default-avatar.png'
 import './Profile.css'
 
 export function loader() {
-    if (!auth.currentUser) {
-        return redirect('/login?message=You have to log in to proceed')
-    } else {
-        return defer({ profile: getUser(auth.currentUser.uid) })
-    }
+    return new Promise((resolve) => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (!user) {
+                resolve(redirect('/login?message=You have to log in to proceed'));
+            } else {
+                resolve(defer({ profile: getUser(user.uid) }));
+            }
+            unsubscribe();
+        });
+    });
 }
 
 export default function Profile() {

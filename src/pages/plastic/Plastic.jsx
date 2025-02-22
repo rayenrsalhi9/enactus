@@ -8,11 +8,16 @@ import './Plastic.css'
 import { auth } from '../../config/config'
 
 export async function loader() {
-    if (!auth.currentUser) {
-        return redirect('/login?message=You have to log in to proceed')
-    } else {
-        return defer({ posts: getPosts()})
-    }
+    return new Promise((resolve) => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (!user) {
+                resolve(redirect('/login?message=You have to log in to proceed'))
+            } else {
+                resolve(defer({posts: getPosts()}))
+            }
+            unsubscribe()
+        }) 
+    })
 }
 
 export default function Plastic() {
