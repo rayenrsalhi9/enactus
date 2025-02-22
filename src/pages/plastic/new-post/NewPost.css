@@ -145,3 +145,17 @@
 .submit-report-btn:hover {
     background: #111;
 }
+
+.submit-report-btn:disabled {
+    opacity: .5;
+}
+
+/* Error message */
+
+.new-post .error-message {
+    color: #de2436;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 15px auto;
+    text-align: center;
+}

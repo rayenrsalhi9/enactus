@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Form, redirect } from 'react-router-dom'
+import { Form, redirect, useActionData, useNavigation } from 'react-router-dom'
 import locationIcon from '../../../assets/plastic-post/location.png'
 import bottleIcon from '../../../assets/plastic-post/bottle.png'
 import bagIcon from '../../../assets/plastic-post/bag.png'
@@ -34,6 +34,9 @@ export async function action({ request }) {
 }
 
 export default function NewPost() {
+    const errorMsg = useActionData()
+    const navigation = useNavigation()
+
     return (
         <section className="new-post">   
             <h1>Add Plastic Report</h1>
@@ -72,7 +75,13 @@ export default function NewPost() {
                         </div>
                     </div>
                 </div>
-                <button className='submit-report-btn'>Submit Report</button>
+                <button 
+                    className='submit-report-btn'
+                    disabled={navigation.state === 'submitting'}
+                >
+                    {navigation.state === 'submitting' ? 'Posting...' : 'Submit Report'}
+                </button>
+                {errorMsg && <h3 className="error-message">{errorMsg}</h3>}
             </Form>
         </section>
     )
