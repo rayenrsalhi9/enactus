@@ -7,19 +7,24 @@ import {
 
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
-
-import SignUp, {action as SignupAction} from './pages/register/signup/SignUp'
-import Login, { action as loginAction }from './pages/register/login/Login'
-
-import Profile, { loader as profileLoader } from './pages/profile/Profile'
-import Edit, { action as editAction } from './pages/edit/Edit'
 import About from './pages/about/About'
-
-import Plastic, { loader as plasticLoader} from './pages/plastic/Plastic'
-import NewPost, { action as newPostAction, loader as newPostLoader} from './pages/plastic/new-post/NewPost'
-import PostDetails from './pages/plastic/postDetails/PostDetails'
-
 import NotFound from './components/notFound/NotFound'
+
+import SignUp, 
+{action as SignupAction} from './pages/register/signup/SignUp'
+import Login, 
+{ action as loginAction }from './pages/register/login/Login'
+
+import Profile, 
+{ loader as profileLoader } from './pages/profile/Profile'
+import Edit, { action as editAction } from './pages/edit/Edit'
+
+import Plastic, 
+{ loader as plasticLoader} from './pages/plastic/Plastic'
+import NewPost, 
+{ action as newPostAction, loader as newPostLoader} from './pages/plastic/new-post/NewPost'
+import PostDetails,
+{ loader as detailsLoader } from './pages/plastic/postDetails/PostDetails'
 
 import './App.css'
 
@@ -56,6 +61,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path='plastic/:id'
       element={<PostDetails />}
+      loader={detailsLoader}
     />
     <Route 
       path='newPost'
